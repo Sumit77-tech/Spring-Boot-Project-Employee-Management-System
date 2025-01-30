@@ -9,6 +9,26 @@ import jakarta.persistence.Id;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String name;
+    private String email;
+    private int age; // Changed from String to int
+    private String designation;
+
+    // Default Constructor (Required by JPA)
+    public Employee() {
+    }
+
+    // Parameterized Constructor (Optional, for convenience)
+    public Employee(String name, String email, int age, String designation) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.designation = designation;
+    }
+
+    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -33,11 +53,11 @@ public class Employee {
         this.email = email;
     }
 
-    public String getAge() {
+    public int getAge() { // Changed return type to int
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) { // Changed parameter type to int
         this.age = age;
     }
 
@@ -48,16 +68,6 @@ public class Employee {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
-
-    private long id;
-
-    private String name;
-
-    private String email;
-
-    private String age;
-
-    private String designation;
 
     @Override
     public String toString() {

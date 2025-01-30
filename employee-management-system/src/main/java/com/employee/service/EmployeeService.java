@@ -1,7 +1,6 @@
 package com.employee.service;
 
 import java.util.List;
-
 import com.employee.model.Employee;
 
 public interface EmployeeService {
@@ -12,4 +11,7 @@ public interface EmployeeService {
     Employee getById(Long id);
 
     void deleteById(Long id);
+
+    // Add this method for search functionality
+    List<Employee> searchEmployees(String keyword);
 }

@@ -48,4 +48,12 @@ public class EmployeeServiceImpl implements EmployeeService {
             employeeRepository.deleteById(id);
         }
     }
+
+    // New method for search functionality
+    public List<Employee> searchEmployees(String name) {
+        if (Objects.nonNull(name) && !name.isEmpty()) {
+            return employeeRepository.findByNameContainingIgnoreCase(name);
+        }
+        return getAllEmployee(); // Return all employees if no search term is provided
+    }
 }

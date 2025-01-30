@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -18,8 +20,13 @@ public class EmployeeController {
 
     // Display home page with all employees
     @GetMapping("/")
-    public String viewHomePage(Model model) {
-        model.addAttribute("allemplist", employeeService.getAllEmployee());
+    public String viewHomePage(Model model, @RequestParam(value = "query", required = false) String query) {
+        if (query != null && !query.isEmpty()) {
+            List<Employee> employees = employeeService.searchEmployees(query);
+            model.addAttribute("allemplist", employees);
+        } else {
+            model.addAttribute("allemplist", employeeService.getAllEmployee());
+        }
         return "index"; // Ensure the 'index.html' template exists
     }
 

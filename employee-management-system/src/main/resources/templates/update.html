@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,35 +8,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h1>Employee Management System</h1>
         <hr>
         
         <!-- Update Employee Form -->
         <h2>Update Employee</h2>
-		<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+        <form th:action="@{/save}" th:object="${employee}" method="post">
+            <!-- Hidden ID Field to preserve the employee's ID -->
             <div class="mb-3">
                 <input type="hidden" th:field="*{id}">
             </div>
+
+            <!-- Name Field -->
             <div class="mb-3">
                 <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4" required>
             </div>
+
+            <!-- Email Field -->
             <div class="mb-3">
                 <input type="email" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required>
             </div>
+
+            <!-- Age Field -->
             <div class="mb-3">
                 <input type="number" th:field="*{age}" placeholder="Age" class="form-control mb-4 col-4" required>
             </div>
+
+            <!-- Designation Field -->
             <div class="mb-3">
                 <input type="text" th:field="*{designation}" placeholder="Designation" class="form-control mb-4 col-4" required>
             </div>
+
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-info col-2">Update</button>
         </form>
         <hr>
         
         <!-- Back to Employee List -->
-        <a th:href="#{/}">Back to Employee List</a>
+        <a th:href="@{/}" class="btn btn-secondary">Back to Employee List</a>
     </div>
-    
 </body>
 </html>
