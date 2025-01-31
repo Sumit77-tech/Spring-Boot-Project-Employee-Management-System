@@ -63,7 +63,7 @@
             </div>
         <div>
             <a th:href="@{/?page=${currentPage - 1}&size=${size}}" class="btn btn-secondary" th:if="${currentPage > 0}">Previous</a>
-            <a th:href="@{/?page=${currentPage + 1}&size=${size}}" class="btn btn-secondary" th:if="${currentPage < totalPages - 1}">Next</a>
+            <a th:href="@{/?page=${currentPage + 1}&size=${size}}" class="btn btn-dark" th:if="${currentPage < totalPages - 1}">Next</a>
         </div>
     </div>
 
